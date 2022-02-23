@@ -17,7 +17,6 @@ public class Penjualanmakanan {
     public static void main(String[] args) {
         // TODO code application logic here
         tampilanutama show = new tampilanutama();
-        
         show.setVisible(true);
     }
     

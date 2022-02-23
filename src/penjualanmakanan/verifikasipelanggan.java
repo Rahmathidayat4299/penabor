@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package penjualanmakanan;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,11 +17,11 @@ import javax.swing.JOptionPane;
 public class verifikasipelanggan extends javax.swing.JFrame {
 
     /**
-     * Creates new form verifikasipelanggan
+     * 
      */
     public verifikasipelanggan(int total) {
         initComponents();
-        totalbelanja.setText("Rp. "+total);
+        vtotal.setText("Rp. "+total);
     }
 
     /**
@@ -34,10 +38,10 @@ public class verifikasipelanggan extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        nama = new javax.swing.JTextField();
-        alamat = new javax.swing.JTextField();
-        hp = new javax.swing.JTextField();
-        totalbelanja = new javax.swing.JTextField();
+        vnama = new javax.swing.JTextField();
+        valamat = new javax.swing.JTextField();
+        vkontak = new javax.swing.JTextField();
+        vtotal = new javax.swing.JTextField();
         submit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,7 +57,7 @@ public class verifikasipelanggan extends javax.swing.JFrame {
 
         jLabel5.setText("TOTAL BELANJA");
 
-        totalbelanja.setEditable(false);
+        vtotal.setEditable(false);
 
         submit.setText("SUBMIT");
         submit.addActionListener(new java.awt.event.ActionListener() {
@@ -81,10 +85,10 @@ public class verifikasipelanggan extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(132, 132, 132)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nama)
-                            .addComponent(alamat)
-                            .addComponent(hp)
-                            .addComponent(totalbelanja, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)))
+                            .addComponent(vnama)
+                            .addComponent(valamat)
+                            .addComponent(vkontak)
+                            .addComponent(vtotal, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(204, 204, 204)
                         .addComponent(submit)))
@@ -97,19 +101,19 @@ public class verifikasipelanggan extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(hp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vkontak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(totalbelanja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(submit)
                 .addGap(0, 18, Short.MAX_VALUE))
@@ -121,13 +125,30 @@ public class verifikasipelanggan extends javax.swing.JFrame {
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         // TODO add your handling code here:
-        if(nama.getText().isEmpty() || alamat.getText().isEmpty() || hp.getText().isEmpty() ) {
+        if(vnama.getText().isEmpty() || valamat.getText().isEmpty() || vkontak.getText().isEmpty() ) {
             JOptionPane.showMessageDialog(null, "Harap isi Data Diri Anda Dengan Lengkap");
         } else {
             JOptionPane.showMessageDialog(null, "Terima Kasih Atas Pesanan Anda");
             JOptionPane.showMessageDialog(null, "Pesanan Anda Akan Segera Kami Antar");
             dispose();
         }
+        
+        String nama = vnama.getText();
+        String alamat = valamat.getText();
+        String kontak = vkontak.getText();
+        String total_belanja = vtotal.getText();
+         try {
+           Class.forName("com.mysql.jdbc.Driver");
+           Connection con = DriverManager.getConnection
+        ("jdbc:mysql://localhost:3306/ristolioshop?user=root&password=");
+            
+            String sql = "insert into data_pelanggan values('" +nama+ "',"+ "'" + alamat+ "',"+ "'"+kontak+ "',"+ "'" + total_belanja + "')";
+            Statement stat = con.createStatement();
+            stat.execute(sql);
+            JOptionPane.showMessageDialog(null,"Data Telah Disimpan");
+        } catch (ClassNotFoundException | SQLException e) {
+        }
+        
     }//GEN-LAST:event_submitActionPerformed
 
     /**
@@ -166,15 +187,15 @@ public class verifikasipelanggan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField alamat;
-    private javax.swing.JTextField hp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField nama;
     private javax.swing.JButton submit;
-    private javax.swing.JTextField totalbelanja;
+    private javax.swing.JTextField valamat;
+    private javax.swing.JTextField vkontak;
+    private javax.swing.JTextField vnama;
+    private javax.swing.JTextField vtotal;
     // End of variables declaration//GEN-END:variables
 }

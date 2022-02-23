@@ -41,10 +41,10 @@
                       </Group>
                       <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="nama" alignment="0" max="32767" attributes="0"/>
-                          <Component id="alamat" alignment="0" max="32767" attributes="0"/>
-                          <Component id="hp" alignment="0" max="32767" attributes="0"/>
-                          <Component id="totalbelanja" alignment="0" pref="194" max="32767" attributes="0"/>
+                          <Component id="vnama" alignment="0" max="32767" attributes="0"/>
+                          <Component id="valamat" alignment="0" max="32767" attributes="0"/>
+                          <Component id="vkontak" alignment="0" max="32767" attributes="0"/>
+                          <Component id="vtotal" alignment="0" pref="194" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -63,22 +63,22 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="nama" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vnama" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="alamat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="valamat" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="hp" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vkontak" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="totalbelanja" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vtotal" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="submit" min="-2" max="-2" attributes="0"/>
@@ -116,13 +116,13 @@
         <Property name="text" type="java.lang.String" value="TOTAL BELANJA"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="nama">
+    <Component class="javax.swing.JTextField" name="vnama">
     </Component>
-    <Component class="javax.swing.JTextField" name="alamat">
+    <Component class="javax.swing.JTextField" name="valamat">
     </Component>
-    <Component class="javax.swing.JTextField" name="hp">
+    <Component class="javax.swing.JTextField" name="vkontak">
     </Component>
-    <Component class="javax.swing.JTextField" name="totalbelanja">
+    <Component class="javax.swing.JTextField" name="vtotal">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
